@@ -9,8 +9,7 @@ body,
 }
 
 body {
-  /* فونت فارسی در اولویت قرار گرفت */
-  font-family: 'Vazirmatn', 'Inter', sans-serif; 
+  font-family: 'Vazirmatn', 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #050308;
@@ -19,7 +18,7 @@ body {
   overflow-x: hidden;
 }
 
-/* افکت پس‌زمینه اکلیپس */
+/* Fallback backdrop */
 .eclipse-fallback-bg {
   background:
     radial-gradient(ellipse 70% 60% at 50% 15%, rgba(124, 58, 237, 0.35), transparent 60%),
@@ -39,18 +38,34 @@ body {
   }
 }
 
-/* افکت شیشه‌ای مایع */
+/* Liquid glass */
 .liquid-glass {
   background: rgba(20, 8, 36, 0.45);
   background-blend-mode: luminosity;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(180, 120, 255, 0.15);
+  border: none;
   box-shadow: inset 0 1px 1px rgba(180, 120, 255, 0.12), 0 4px 20px rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
   border-radius: 16px;
 }
+
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(
+    180deg,
+    rgba(180, 120, 255, 0.35) 0%,
+    rgba(180, 120, 255, 0.12) 20%,
+    rgba(180, 120, 255, 0) 40%,
+    rgba(180, 120, 255, 0) 60%,
+    rgba(180, 120, 255, 0.12) 80%,
+    rgba(180, 120, 255, 0.35) 100%
+  );
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
