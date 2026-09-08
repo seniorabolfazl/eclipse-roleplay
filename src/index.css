@@ -16,26 +16,66 @@ body {
   color: #ffffff;
   margin: 0;
   overflow-x: hidden;
+  cursor: crosshair !important;
 }
 
-/* Fallback backdrop */
+button, a, input, textarea, select {
+  cursor: pointer !important;
+}
+
+/* =========================================
+   Graphical Background (GTA / Eclipse Vibe)
+   ========================================= */
 .eclipse-fallback-bg {
+  background-color: #050308;
+  position: relative;
+  z-index: 0;
+}
+
+/* شبکه (Grid) سه‌بعدی متحرک شبیه رادار و نقشه */
+.eclipse-fallback-bg::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image:
+    linear-gradient(rgba(124, 58, 237, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 58, 237, 0.08) 1px, transparent 1px);
+  background-size: 60px 60px;
+  transform: perspective(1000px) rotateX(60deg) translateY(0);
+  animation: grid-scroll 15s linear infinite;
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* نورهای محو آژیر پلیس (قرمز و آبی/بنفش) در پس‌زمینه */
+.eclipse-fallback-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
   background:
-    radial-gradient(ellipse 70% 60% at 50% 15%, rgba(124, 58, 237, 0.35), transparent 60%),
-    radial-gradient(ellipse 90% 70% at 50% 100%, rgba(42, 15, 77, 0.55), transparent 65%),
-    #050308;
-  animation: eclipse-breathe 10s ease-in-out infinite;
+    radial-gradient(circle at 15% 40%, rgba(220, 38, 38, 0.15) 0%, transparent 45%),
+    radial-gradient(circle at 85% 60%, rgba(59, 130, 246, 0.15) 0%, transparent 45%),
+    radial-gradient(circle at 50% 100%, rgba(124, 58, 237, 0.2) 0%, transparent 50%);
+  filter: blur(60px);
+  animation: police-lights 8s infinite alternate ease-in-out;
+  z-index: -1;
+  pointer-events: none;
 }
 
-@keyframes eclipse-breathe {
-  0%, 100% { filter: brightness(1); }
-  50% { filter: brightness(1.12); }
+/* انیمیشن حرکت نقشه/گرید */
+@keyframes grid-scroll {
+  0% { transform: perspective(1000px) rotateX(60deg) translateY(0); }
+  100% { transform: perspective(1000px) rotateX(60deg) translateY(60px); }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .eclipse-fallback-bg {
-    animation: none;
-  }
+/* انیمیشن تپش نورهای پلیس */
+@keyframes police-lights {
+  0% { opacity: 0.3; transform: scale(0.9) translate(-2%, -2%); }
+  50% { opacity: 0.8; transform: scale(1.1) translate(2%, 3%); }
+  100% { opacity: 0.4; transform: scale(1) translate(2%, -2%); }
 }
 
 /* Liquid glass */
@@ -80,18 +120,11 @@ body {
   background: #050308;
 }
 ::-webkit-scrollbar-thumb {
-  background: #5b21b6; /* بنفش تیره */
+  background: #5b21b6;
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #7c3aed; /* بنفش روشن‌تر در حالت هاور */
-}
-/* Custom Cursor (GTA Vibe) */
-body {
-  cursor: crosshair !important;
-}
-button, a, input, textarea, select {
-  cursor: pointer !important;
+  background: #7c3aed;
 }
 
 /* افکت مانیتور قدیمی برای ایجاد حس سیستم‌های داخل بازی */
