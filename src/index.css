@@ -83,19 +83,17 @@ button, a, input, textarea, select {
   100% { opacity: 0.4; transform: scale(1) translate(2%, -2%); }
 }
 
-/* Liquid glass بدون کادر مزاحم */
 .liquid-glass {
-  background: rgba(20, 8, 36, 0.55);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: none !important; /* حذف کامل هرگونه کادر یا خط دور */
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  background: rgba(10, 5, 20, 0.25) !important; /* شفافیت بالا برای دیده شدن نورها */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
   border-radius: 16px;
 }
 
-/* حذف پس‌زمینه کادری قبلی */
 .liquid-glass::before {
   display: none;
 }
