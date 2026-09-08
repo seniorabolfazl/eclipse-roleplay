@@ -21,7 +21,7 @@ export default function Wanted() {
           <Tilt key={i} tiltMaxAngleX={5} tiltMaxAngleY={5} scale={1.02} className="relative">
             <div className={`border-4 rounded-xl overflow-hidden bg-black/60 backdrop-blur-sm ${criminal.status === 'WANTED' ? 'border-red-600' : 'border-gray-600 opacity-75'}`}>
               
-              {/* لیبل روی عکس */}
+              {}
               {criminal.status === 'CAPTURED' && (
                 <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/50">
                   <span className="text-4xl font-black text-red-600 border-4 border-red-600 p-2 -rotate-12 tracking-widest font-['Inter'] drop-shadow-md">BUSTED</span>
@@ -29,7 +29,7 @@ export default function Wanted() {
               )}
 
               <div className="h-64 overflow-hidden grayscale contrast-125">
-                {/* استفاده از تصاویر تصادفی دارک به عنوان عکس مجرم */}
+                {}
                 <img src={criminal.image} alt="criminal" className="w-full h-full object-cover" />
               </div>
               
