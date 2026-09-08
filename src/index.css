@@ -9,17 +9,17 @@ body,
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  /* فونت فارسی در اولویت قرار گرفت */
+  font-family: 'Vazirmatn', 'Inter', sans-serif; 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #050308;
   color: #ffffff;
   margin: 0;
+  overflow-x: hidden;
 }
 
-/* Fallback backdrop shown when no video source is set — a slow, single
-   breathing glow behind a near-black field, standing in for the eclipse's
-   corona until a real clip is dropped into VIDEO_SRC. */
+/* افکت پس‌زمینه اکلیپس */
 .eclipse-fallback-bg {
   background:
     radial-gradient(ellipse 70% 60% at 50% 15%, rgba(124, 58, 237, 0.35), transparent 60%),
@@ -39,33 +39,18 @@ body {
   }
 }
 
-/* Liquid glass — tinted with a faint violet cast to match the Eclipse theme */
+/* افکت شیشه‌ای مایع */
 .liquid-glass {
   background: rgba(20, 8, 36, 0.45);
   background-blend-mode: luminosity;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border: none;
-  box-shadow: inset 0 1px 1px rgba(180, 120, 255, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(180, 120, 255, 0.15);
+  box-shadow: inset 0 1px 1px rgba(180, 120, 255, 0.12), 0 4px 20px rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
+  border-radius: 16px;
 }
-
-.liquid-glass::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1.4px;
-  background: linear-gradient(
-    180deg,
-    rgba(180, 120, 255, 0.35) 0%,
-    rgba(180, 120, 255, 0.12) 20%,
-    rgba(180, 120, 255, 0) 40%,
-    rgba(180, 120, 255, 0) 60%,
-    rgba(180, 120, 255, 0.12) 80%,
-    rgba(180, 120, 255, 0.35) 100%
-  );
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
