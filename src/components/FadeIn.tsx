@@ -6,11 +6,6 @@ interface FadeInProps {
   duration?: number
   className?: string
 }
-
-/**
- * Simple opacity-only entrance. Starts invisible, flips to visible
- * after `delay` ms, and transitions over `duration` ms.
- */
 export default function FadeIn({
   children,
   delay = 0,
