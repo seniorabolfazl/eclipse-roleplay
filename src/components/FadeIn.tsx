@@ -1,0 +1,38 @@
+import { useEffect, useState, type ReactNode } from 'react'
+
+interface FadeInProps {
+  children: ReactNode
+  delay?: number
+  duration?: number
+  className?: string
+}
+
+/**
+ * Simple opacity-only entrance. Starts invisible, flips to visible
+ * after `delay` ms, and transitions over `duration` ms.
+ */
+export default function FadeIn({
+  children,
+  delay = 0,
+  duration = 800,
+  className = '',
+}: FadeInProps) {
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setVisible(true), delay)
+    return () => clearTimeout(timer)
+  }, [delay])
+
+  return (
+    <div
+      className={`transition-opacity ${className}`}
+      style={{
+        opacity: visible ? 1 : 0,
+        transitionDuration: `${duration}ms`,
+      }}
+    >
+      {children}
+    </div>
+  )
+}
