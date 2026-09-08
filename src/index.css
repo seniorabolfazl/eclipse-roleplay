@@ -83,38 +83,21 @@ button, a, input, textarea, select {
   100% { opacity: 0.4; transform: scale(1) translate(2%, -2%); }
 }
 
-/* Liquid glass */
+/* Liquid glass بدون کادر مزاحم */
 .liquid-glass {
-  background: rgba(20, 8, 36, 0.45);
-  background-blend-mode: luminosity;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: none;
-  box-shadow: inset 0 1px 1px rgba(180, 120, 255, 0.12), 0 4px 20px rgba(0, 0, 0, 0.3);
+  background: rgba(20, 8, 36, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: none !important; /* حذف کامل هرگونه کادر یا خط دور */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
   position: relative;
   overflow: hidden;
   border-radius: 16px;
 }
 
+/* حذف پس‌زمینه کادری قبلی */
 .liquid-glass::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1.4px;
-  background: linear-gradient(
-    180deg,
-    rgba(180, 120, 255, 0.35) 0%,
-    rgba(180, 120, 255, 0.12) 20%,
-    rgba(180, 120, 255, 0) 40%,
-    rgba(180, 120, 255, 0) 60%,
-    rgba(180, 120, 255, 0.12) 80%,
-    rgba(180, 120, 255, 0.35) 100%
-  );
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
+  display: none;
 }
 
 /* Custom Scrollbar */
