@@ -18,36 +18,39 @@ export default function Navbar() {
     { name: 'داستان', path: '/story' },
     { name: 'فکشن‌ها', path: '/factions' },
     { name: 'مجرمین', path: '/wanted' },
-    { name: 'فروشگاه', path: '/store' }, // تب فروشگاه VIP
+    { name: 'فروشگاه', path: '/store' },
     { name: 'قوانین', path: '/rules' },
     { name: 'شهروندی', path: '/whitelist' },
-    { name: 'مدیریت', path: '/admin' },  // تب پنل ادمین
+    { name: 'مدیریت', path: '/admin' },
   ];
 
   return (
     <nav className="relative z-50 flex items-center justify-between px-6 py-5 max-w-7xl mx-auto w-full">
-      <div className="flex items-center gap-8">
+      {/* لوگوی اکلیپس در سمت راست */}
+      <div className="flex items-center gap-12">
         <Link to="/" onClick={playClick} className="text-2xl font-bold tracking-widest uppercase text-white hover:text-purple-400 transition-colors">
           ECLIPSE
         </Link>
-        <ul className="hidden lg:flex gap-6 text-sm text-gray-300">
-          {navLinks.map((link) => (
-            <li key={link.path}>
-              <Link 
-                to={link.path} 
-                onClick={playClick}
-                className={`transition-colors pb-1 border-b-2 ${
-                  location.pathname === link.path 
-                    ? 'text-white border-purple-500' 
-                    : 'border-transparent hover:text-white hover:border-purple-500/50'
-                }`}
-              >
-                {link.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
       </div>
+
+      {/* تب‌های منو در وسط/چپ (با flex-row-reverse برای فیکس شدن ترتیب فارسی) */}
+      <ul className="hidden lg:flex flex-row-reverse gap-6 text-sm text-gray-300 items-center">
+        {navLinks.map((link) => (
+          <li key={link.path}>
+            <Link 
+              to={link.path} 
+              onClick={playClick}
+              className={`transition-colors pb-1 border-b-2 ${
+                location.pathname === link.path 
+                  ? 'text-white border-purple-500' 
+                  : 'border-transparent hover:text-white hover:border-purple-500/50'
+              }`}
+            >
+              {link.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
 
       <div className="flex items-center gap-4">
         <button 
