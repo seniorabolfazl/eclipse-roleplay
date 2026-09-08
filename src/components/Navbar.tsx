@@ -32,12 +32,12 @@ export default function Navbar() {
         transition={{ duration: 0.5 }}
         className="w-full max-w-4xl bg-black/70 backdrop-blur-xl border border-purple-500/30 px-5 py-2.5 flex items-center justify-between rounded-full shadow-[0_0_25px_rgba(124,58,237,0.3)]"
       >
-        {/* لوگو در سمت راست */}
+        {}
         <Link to="/" onClick={playClick} className="text-lg font-black tracking-widest uppercase text-transparent bg-clip-text bg-gradient-to-r from-white to-purple-400 pl-2">
           ECLIPSE <span className="text-xs text-purple-400 font-normal">RP</span>
         </Link>
 
-        {/* تب‌های منو در وسط با فاصله مناسب */}
+        {}
         <ul className="hidden lg:flex flex-row-reverse gap-1.5 text-xs font-medium text-gray-300 items-center">
           {navLinks.map((link) => {
             const isActive = location.pathname === link.path;
@@ -59,7 +59,7 @@ export default function Navbar() {
           })}
         </ul>
 
-        {/* دکمه منوی موبایل */}
+        {}
         <div className="flex items-center lg:hidden">
           <button 
             className="text-white p-1.5 bg-white/5 rounded-full hover:bg-white/10 transition-colors"
@@ -69,7 +69,7 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* منوی موبایل کشویی */}
+        {}
         <AnimatePresence>
           {isOpen && (
             <motion.div 
