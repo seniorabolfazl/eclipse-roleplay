@@ -2,7 +2,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import { ToastContainer } from 'react-toastify';
-import { Instagram, Youtube, MessagesSquare } from 'lucide-react'; // آیکون‌های جدید
+import { Instagram, Youtube, MessagesSquare } from 'lucide-react'; 
 import Navbar from './components/Navbar';
 import ScrollToTop from './components/ScrollToTop';
 
@@ -11,7 +11,7 @@ const Rules = lazy(() => import('./pages/Rules'));
 const Whitelist = lazy(() => import('./pages/Whitelist'));
 const Factions = lazy(() => import('./pages/Factions'));
 const Story = lazy(() => import('./pages/Story'));
-const Wanted = lazy(() => import('./pages/Wanted')); // صفحه جدید مجرمین
+const Wanted = lazy(() => import('./pages/Wanted')); 
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 const GtaLoader = () => (
@@ -25,7 +25,7 @@ export default function App() {
   return (
     <Router>
       <ScrollToTop />
-      {/* افکت CRT به کل سایت اضافه شد */}
+      {/* CRT  */}
       <div className="min-h-screen eclipse-fallback-bg relative overflow-hidden flex flex-col">
         <div className="crt-overlay hidden sm:block"></div> 
         
@@ -39,13 +39,13 @@ export default function App() {
               <Route path="/whitelist" element={<Whitelist />} />
               <Route path="/factions" element={<Factions />} />
               <Route path="/story" element={<Story />} />
-              <Route path="/wanted" element={<Wanted />} /> {/* مسیر مجرمین */}
+              <Route path="/wanted" element={<Wanted />} /> {}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
         </div>
 
-        {/* فوتر حرفه‌ای با شبکه‌های اجتماعی */}
+        {}
         <footer className="z-10 py-8 border-t border-purple-900/30 bg-black/60 backdrop-blur-md mt-10">
           <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-gray-400 text-sm">
