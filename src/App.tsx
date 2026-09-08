@@ -1,9 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// BrowserRouter به HashRouter تغییر کرد
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Rules from './pages/Rules';
 import Whitelist from './pages/Whitelist';
-// این سه خط جدید را اضافه کن:
 import Factions from './pages/Factions';
 import Story from './pages/Story';
 import NotFound from './pages/NotFound';
@@ -19,10 +19,9 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/rules" element={<Rules />} />
             <Route path="/whitelist" element={<Whitelist />} />
-            {/* این سه مسیر جدید را اضافه کن: */}
             <Route path="/factions" element={<Factions />} />
             <Route path="/story" element={<Story />} />
-            <Route path="*" element={<NotFound />} /> {/* این خط برای صفحه 404 است */}
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
 
