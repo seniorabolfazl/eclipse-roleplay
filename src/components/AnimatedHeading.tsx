@@ -9,12 +9,6 @@ interface AnimatedHeadingProps {
   charDuration?: number
 }
 
-/**
- * Splits `text` on \n into lines, then each line into characters.
- * Every character is its own inline-block span that animates from
- * opacity:0 / translateX(-18px) to opacity:1 / translateX(0), with a
- * stagger based on line + character index.
- */
 export default function AnimatedHeading({
   text,
   className = '',
