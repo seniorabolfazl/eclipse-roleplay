@@ -18,9 +18,11 @@ export default function Navbar() {
     { name: 'خانه', path: '/' },
     { name: 'داستان', path: '/story' },
     { name: 'فکشن‌ها', path: '/factions' },
-    { name: 'مجرمین', path: '/wanted' }, // این خط اضافه شد
+    { name: 'مجرمین', path: '/wanted' },
+    { name: 'فروشگاه', path: '/store' }, // اضافه شد
     { name: 'قوانین', path: '/rules' },
     { name: 'شهروندی', path: '/whitelist' },
+    { name: 'مدیریت', path: '/admin' },  // اضافه شد
   ];
 
   return (
