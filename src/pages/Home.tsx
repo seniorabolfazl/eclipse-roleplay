@@ -1,0 +1,94 @@
+import { useEffect, useState } from 'react';
+import { Monitor, Radio, Wrench, Package } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+export default function Home() {
+  const [serverData, setServerData] = useState({ online: true, players: 'بارگذاری...' });
+
+  // این بخش برای اتصال به سرور فایوام شماست (Live API)
+  useEffect(() => {
+    // برای واقعی شدن، کامنت خط پایین رو بردار و آی‌پی سرورت رو بذار
+    // fetch('http://YOUR_FIVEM_IP:30120/players.json')
+    setTimeout(() => {
+      setServerData({ online: true, players: '128 / 256' });
+    }, 1500);
+  }, []);
+
+  return (
+    <main className="relative z-10 flex flex-col items-center justify-center pt-16 px-4 text-center max-w-6xl mx-auto w-full">
+      
+      {/* Video Background Placeholder */}
+      <div className="absolute inset-0 -z-10 w-full h-[70vh] overflow-hidden opacity-20 mask-image-b">
+         {/* اگر ویدیوی سینماتیک داشتی، این تگ رو فعال کن: */}
+         {/* <video autoPlay loop muted playsInline className="w-full h-full object-cover"><source src="/cinematic.mp4" type="video/mp4" /></video> */}
+      </div>
+
+      <h2 className="text-5xl md:text-7xl font-extrabold leading-tight mb-6 drop-shadow-lg text-white">
+        زندگی ای دیگر در <br/> <span className="text-purple-400">دل شب</span> رقم بزن.
+      </h2>
+      <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl">
+        یک شهر زنده، داستان‌های واقعی و جامعه‌ای که با هم رشد می‌کند. همین حالا به کامل‌ترین تجربه رول‌پلی بپیوندید.
+      </p>
+
+      {/* دکمه‌های اکشن */}
+      <div className="flex flex-col sm:flex-row items-center gap-6 mb-24">
+        <button className="bg-white text-black px-8 py-3 rounded-lg font-bold hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+          ورود با دیسکورد
+        </button>
+        <Link to="/whitelist" className="liquid-glass px-8 py-3 rounded-lg font-bold hover:bg-white/10 transition-colors text-white">
+          درخواست وایت‌لیست
+        </Link>
+        
+        {/* Live Server Status */}
+        <div className="flex items-center gap-3 liquid-glass px-6 py-3 rounded-lg ms-0 sm:ms-4 text-white">
+          <div className="flex relative">
+            <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${serverData.online ? 'bg-green-400' : 'bg-red-400'}`}></span>
+            <span className={`relative inline-flex rounded-full h-3 w-3 ${serverData.online ? 'bg-green-500' : 'bg-red-500'}`}></span>
+          </div>
+          <div className="text-sm text-right">
+            <p className={`font-bold ${serverData.online ? 'text-green-400' : 'text-red-400'}`}>
+              {serverData.online ? 'سرور آنلاین است' : 'سرور آفلاین است'}
+            </p>
+            <p className="text-gray-300 text-xs">بازیکنان: {serverData.players}</p>
+          </div>
+        </div>
+      </div>
+
+      {/* NUI & Custom Scripts Showcase */}
+      <div className="w-full text-right mb-20">
+        <h3 className="text-3xl font-bold mb-10 text-center text-purple-300">طراحی شده برای بهترین تجربه</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <div className="liquid-glass p-6 rounded-xl hover:-translate-y-2 transition-transform cursor-pointer border border-purple-500/20 group">
+            <Monitor className="text-purple-400 mb-4 group-hover:scale-110 transition-transform" size={32} />
+            <h4 className="font-bold text-lg mb-2 text-white">اسکوربورد اختصاصی</h4>
+            <span className="text-xs font-mono text-purple-300 mb-2 block">mrz_scoreboard</span>
+            <p className="text-sm text-gray-400">طراحی مدرن، سبک و روان برای دسترسی لحظه‌ای به وضعیت شهر و بازیکنان.</p>
+          </div>
+
+          <div className="liquid-glass p-6 rounded-xl hover:-translate-y-2 transition-transform cursor-pointer border border-purple-500/20 group">
+            <Wrench className="text-purple-400 mb-4 group-hover:scale-110 transition-transform" size={32} />
+            <h4 className="font-bold text-lg mb-2 text-white">سیستم مکانیک</h4>
+            <span className="text-xs font-mono text-purple-300 mb-2 block">mrz_mechanic</span>
+            <p className="text-sm text-gray-400">تیونینگ حرفه‌ای خودروها، منوهای کاستوم NUI و تعامل بی‌نقص با گاراژهای شهر.</p>
+          </div>
+
+          <div className="liquid-glass p-6 rounded-xl hover:-translate-y-2 transition-transform cursor-pointer border border-purple-500/20 group">
+            <Radio className="text-purple-400 mb-4 group-hover:scale-110 transition-transform" size={32} />
+            <h4 className="font-bold text-lg mb-2 text-white">رادیو ارتباطی</h4>
+            <span className="text-xs font-mono text-purple-300 mb-2 block">vmp_radio</span>
+            <p className="text-sm text-gray-400">طراحی واقع‌گرایانه با رابط کاربری اختصاصی برای فرکانس‌های دولتی و گنگ‌ها.</p>
+          </div>
+
+          <div className="liquid-glass p-6 rounded-xl hover:-translate-y-2 transition-transform cursor-pointer border border-purple-500/20 group">
+            <Package className="text-purple-400 mb-4 group-hover:scale-110 transition-transform" size={32} />
+            <h4 className="font-bold text-lg mb-2 text-white">اینونتوری هوشمند</h4>
+            <span className="text-xs font-mono text-purple-300 mb-2 block">eclipse_inventory</span>
+            <p className="text-sm text-gray-400">مدیریت سریع آیتم‌ها و سلاح‌ها با سیستم Drag & Drop بسیار نرم و بدون باگ.</p>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  );
+}
