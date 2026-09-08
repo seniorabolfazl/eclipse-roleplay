@@ -25,20 +25,20 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="fixed top-6 left-0 right-0 z-50 px-4 flex justify-center">
+    <header className="fixed top-5 left-0 right-0 z-50 px-4 flex justify-center">
       <motion.nav 
-        initial={{ y: -30, opacity: 0 }}
+        initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-        className="w-full max-w-5xl bg-[#0a0514]/60 backdrop-blur-md border border-purple-500/20 px-6 py-3 flex items-center justify-between rounded-2xl shadow-[0_0_30px_rgba(124,58,237,0.25)]"
+        transition={{ duration: 0.5 }}
+        className="w-full max-w-4xl bg-black/70 backdrop-blur-xl border border-purple-500/30 px-5 py-2.5 flex items-center justify-between rounded-full shadow-[0_0_25px_rgba(124,58,237,0.3)]"
       >
         {/* لوگو در سمت راست */}
-        <Link to="/" onClick={playClick} className="text-xl font-black tracking-widest uppercase text-transparent bg-clip-text bg-gradient-to-r from-white to-purple-400">
+        <Link to="/" onClick={playClick} className="text-lg font-black tracking-widest uppercase text-transparent bg-clip-text bg-gradient-to-r from-white to-purple-400 pl-2">
           ECLIPSE <span className="text-xs text-purple-400 font-normal">RP</span>
         </Link>
 
-        {/* تب‌های منو در وسط (ترتیب درست از راست به چپ) */}
-        <ul className="hidden lg:flex flex-row-reverse gap-2 text-sm font-medium text-gray-300 items-center">
+        {/* تب‌های منو در وسط با فاصله مناسب */}
+        <ul className="hidden lg:flex flex-row-reverse gap-1.5 text-xs font-medium text-gray-300 items-center">
           {navLinks.map((link) => {
             const isActive = location.pathname === link.path;
             return (
@@ -46,10 +46,10 @@ export default function Navbar() {
                 <Link 
                   to={link.path} 
                   onClick={playClick}
-                  className={`px-3.5 py-1.5 transition-all duration-300 rounded-xl block ${
+                  className={`px-3 py-1.5 transition-all duration-300 rounded-full block ${
                     isActive 
-                      ? 'text-white bg-purple-600/40 shadow-[0_0_15px_rgba(124,58,237,0.5)] border border-purple-400/30 font-bold' 
-                      : 'hover:text-white hover:bg-white/5'
+                      ? 'text-white bg-purple-600 shadow-[0_0_15px_rgba(124,58,237,0.6)] font-bold' 
+                      : 'hover:text-white hover:bg-white/10'
                   }`}
                 >
                   {link.name}
@@ -62,10 +62,10 @@ export default function Navbar() {
         {/* دکمه منوی موبایل */}
         <div className="flex items-center lg:hidden">
           <button 
-            className="text-white p-2 bg-white/5 rounded-xl hover:bg-white/10 transition-colors"
+            className="text-white p-1.5 bg-white/5 rounded-full hover:bg-white/10 transition-colors"
             onClick={() => { setIsOpen(!isOpen); playClick(); }}
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
 
@@ -73,10 +73,10 @@ export default function Navbar() {
         <AnimatePresence>
           {isOpen && (
             <motion.div 
-              initial={{ opacity: 0, scale: 0.95, y: 15 }}
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 15 }}
-              className="absolute top-20 left-4 right-4 bg-[#0a0514]/95 backdrop-blur-xl p-6 flex flex-col gap-2 lg:hidden shadow-2xl border border-purple-500/30 rounded-2xl z-50"
+              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              className="absolute top-16 left-4 right-4 bg-black/95 backdrop-blur-2xl p-6 flex flex-col gap-2 lg:hidden shadow-2xl border border-purple-500/30 rounded-2xl z-50"
             >
               {navLinks.map((link) => {
                 const isActive = location.pathname === link.path;
@@ -86,7 +86,7 @@ export default function Navbar() {
                     to={link.path} 
                     onClick={() => { setIsOpen(false); playClick(); }}
                     className={`p-3 rounded-xl text-center font-bold transition-all ${
-                      isActive ? 'bg-purple-600/50 text-white shadow-[0_0_15px_rgba(124,58,237,0.4)]' : 'text-gray-300 hover:bg-white/10'
+                      isActive ? 'bg-purple-600 text-white shadow-[0_0_15px_rgba(124,58,237,0.4)]' : 'text-gray-300 hover:bg-white/10'
                     }`}
                   >
                     {link.name}
