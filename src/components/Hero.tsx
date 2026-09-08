@@ -2,14 +2,12 @@ import Navbar from './Navbar'
 import FadeIn from './FadeIn'
 import AnimatedHeading from './AnimatedHeading'
 
-// Replace with your own clip — a night-time city / neon FiveM cinematic works best.
-// Leave empty to fall back to the animated gradient background below.
 const VIDEO_SRC = ''
 
 export default function Hero() {
   return (
     <div className="relative h-screen w-full overflow-hidden bg-eclipse-black text-white">
-      {/* Background */}
+      {}
       {VIDEO_SRC ? (
         <video
           className="absolute inset-0 h-full w-full object-cover"
@@ -22,9 +20,9 @@ export default function Hero() {
       ) : (
         <div className="absolute inset-0 eclipse-fallback-bg" />
       )}
-      {/* No overlay, no dimming layer — background plays/renders raw. */}
+      {}
 
-      {/* Page content */}
+      {}
       <div className="relative z-10 h-full flex flex-col">
         <div className="px-6 md:px-12 lg:px-16 pt-6">
           <Navbar />
@@ -32,7 +30,7 @@ export default function Hero() {
 
         <div className="px-6 md:px-12 lg:px-16 flex-1 flex flex-col justify-end pb-12 lg:pb-16">
           <div className="lg:grid lg:grid-cols-2 lg:items-end">
-            {/* Left column — main content */}
+            {}
             <div>
               <AnimatedHeading
                 text={'زندگی‌ای دیگر\nدر دل شب رقم بزن.'}
@@ -67,7 +65,7 @@ export default function Hero() {
               </FadeIn>
             </div>
 
-            {/* Right column — tag */}
+            {}
             <div className="flex items-end justify-start lg:justify-end mt-8 lg:mt-0">
               <FadeIn delay={1400} duration={1000}>
                 <div className="liquid-glass border border-white/20 px-6 py-3 rounded-xl">
