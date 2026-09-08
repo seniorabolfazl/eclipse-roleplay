@@ -23,16 +23,14 @@ button, a, input, textarea, select {
   cursor: pointer !important;
 }
 
-/* =========================================
-   Graphical Background (GTA / Eclipse Vibe)
-   ========================================= */
+
 .eclipse-fallback-bg {
   background-color: #050308;
   position: relative;
   z-index: 0;
 }
 
-/* شبکه (Grid) سه‌بعدی متحرک شبیه رادار و نقشه */
+
 .eclipse-fallback-bg::before {
   content: "";
   position: absolute;
@@ -50,7 +48,7 @@ button, a, input, textarea, select {
   pointer-events: none;
 }
 
-/* نورهای بسیار واضح، پررنگ و خیره‌کننده آژیر پلیس */
+
 .eclipse-fallback-bg::after {
   content: "";
   position: absolute;
@@ -70,7 +68,7 @@ button, a, input, textarea, select {
   100% { opacity: 1; transform: scale(1.15); }
 }
 
-/* انیمیشن حرکت نقشه/گرید */
+
 @keyframes grid-scroll {
   0% { transform: perspective(1000px) rotateX(60deg) translateY(0); }
   100% { transform: perspective(1000px) rotateX(60deg) translateY(60px); }
@@ -82,7 +80,7 @@ button, a, input, textarea, select {
   50% { opacity: 0.8; transform: scale(1.1) translate(2%, 3%); }
   100% { opacity: 0.4; transform: scale(1) translate(2%, -2%); }
 }
-/* کارت‌های شیشه‌ای کاملاً شفاف بدون کادر تیره */
+
 .liquid-glass {
   background: rgba(15, 8, 30, 0.15) !important;
   backdrop-filter: blur(12px);
@@ -113,7 +111,6 @@ button, a, input, textarea, select {
   background: #7c3aed;
 }
 
-/* افکت مانیتور قدیمی برای ایجاد حس سیستم‌های داخل بازی */
 .crt-overlay {
   pointer-events: none;
   position: absolute;
