@@ -25,65 +25,78 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="relative z-50 flex items-center justify-between px-6 py-5 max-w-7xl mx-auto w-full">
-      {/* لوگوی اکلیپس در سمت راست */}
-      <div className="flex items-center gap-12">
-        <Link to="/" onClick={playClick} className="text-2xl font-bold tracking-widest uppercase text-white hover:text-purple-400 transition-colors">
-          ECLIPSE
+    <header className="sticky top-4 z-50 px-4 w-full flex justify-center">
+      <motion.nav 
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="liquid-glass w-full max-w-6xl px-6 py-3 flex items-center justify-between shadow-[0_0_25px_rgba(124,58,237,0.2)]"
+      >
+        {/* لوگو در سمت راست */}
+        <Link to="/" onClick={playClick} className="text-xl font-black tracking-widest uppercase text-transparent bg-clip-text bg-gradient-to-r from-white to-purple-400">
+          ECLIPSE <span className="text-xs text-purple-500 font-normal">RP</span>
         </Link>
-      </div>
 
-      {/* تب‌های منو در وسط/چپ (با flex-row-reverse برای فیکس شدن ترتیب فارسی) */}
-      <ul className="hidden lg:flex flex-row-reverse gap-6 text-sm text-gray-300 items-center">
-        {navLinks.map((link) => (
-          <li key={link.path}>
-            <Link 
-              to={link.path} 
-              onClick={playClick}
-              className={`transition-colors pb-1 border-b-2 ${
-                location.pathname === link.path 
-                  ? 'text-white border-purple-500' 
-                  : 'border-transparent hover:text-white hover:border-purple-500/50'
-              }`}
-            >
-              {link.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
+        {/* تب‌های منو در وسط (ترتیب درست RTL: از خانه تا مدیریت) */}
+        <ul className="hidden lg:flex flex-row-reverse gap-5 text-sm font-medium text-gray-300 items-center">
+          {navLinks.map((link) => {
+            const isActive = location.pathname === link.path;
+            return (
+              <li key={link.path}>
+                <Link 
+                  to={link.path} 
+                  onClick={playClick}
+                  className={`relative px-3 py-1.5 transition-all duration-300 rounded-lg ${
+                    isActive 
+                      ? 'text-white bg-purple-600/30 shadow-[0_0_15px_rgba(124,58,237,0.4)]' 
+                      : 'hover:text-white hover:bg-white/5'
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
 
-      <div className="flex items-center gap-4">
-        <button 
-          className="lg:hidden text-white z-50 p-2"
-          onClick={() => { setIsOpen(!isOpen); playClick(); }}
-        >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
-      </div>
-
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-20 left-4 right-4 liquid-glass rounded-xl p-6 flex flex-col gap-3 lg:hidden shadow-2xl border border-purple-500/30 bg-black/90 z-50"
+        {/* دکمه منوی موبایل */}
+        <div className="flex items-center gap-4">
+          <button 
+            className="lg:hidden text-white z-50 p-1.5 bg-white/5 rounded-lg hover:bg-white/10 transition-colors"
+            onClick={() => { setIsOpen(!isOpen); playClick(); }}
           >
-            {navLinks.map((link) => (
-              <Link 
-                key={link.path}
-                to={link.path} 
-                onClick={() => { setIsOpen(false); playClick(); }}
-                className={`p-3 rounded-lg text-center font-bold ${
-                  location.pathname === link.path ? 'bg-purple-600/40 text-white' : 'text-gray-300 hover:bg-white/10'
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+
+        {/* منوی موبایل کشویی */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              className="absolute top-20 left-4 right-4 liquid-glass p-6 flex flex-col gap-2 lg:hidden shadow-2xl bg-[#050308]/95 border-purple-500/30 z-50 rounded-2xl"
+            >
+              {navLinks.map((link) => {
+                const isActive = location.pathname === link.path;
+                return (
+                  <Link 
+                    key={link.path}
+                    to={link.path} 
+                    onClick={() => { setIsOpen(false); playClick(); }}
+                    className={`p-3 rounded-xl text-center font-bold transition-all ${
+                      isActive ? 'bg-purple-600/40 text-white shadow-[0_0_15px_rgba(124,58,237,0.4)]' : 'text-gray-300 hover:bg-white/10'
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                );
+              })}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.nav>
+    </header>
   );
 }
