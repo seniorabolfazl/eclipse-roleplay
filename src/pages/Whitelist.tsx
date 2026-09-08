@@ -29,7 +29,6 @@ export default function Whitelist() {
 
     setIsSubmitting(true);
 
-    // شبیه‌سازی ارسال دیتا به وب‌هوک دیسکورد
     setTimeout(() => {
       toast.success('درخواست شما به اداره مهاجرت لوس سانتوس ارسال شد!', { theme: 'dark' });
       setFormData({ rpName: '', discordId: '', age: '', story: '' });
