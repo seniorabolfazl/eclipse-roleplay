@@ -1,3 +1,4 @@
+import 'react-toastify/dist/ReactToastify.css';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import { ToastContainer } from 'react-toastify';
