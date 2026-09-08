@@ -7,6 +7,7 @@ export default function Navbar() {
   const navLinks = [
     { name: 'خانه', path: '/' },
     { name: 'داستان', path: '/story' },
+    { name: 'فکشن‌ها', path: '/factions' }, // این خط اضافه شد
     { name: 'قوانین', path: '/rules' },
     { name: 'شهروندی', path: '/whitelist' },
   ];
