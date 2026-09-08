@@ -82,13 +82,13 @@ button, a, input, textarea, select {
   50% { opacity: 0.8; transform: scale(1.1) translate(2%, 3%); }
   100% { opacity: 0.4; transform: scale(1) translate(2%, -2%); }
 }
-
+/* کارت‌های شیشه‌ای کاملاً شفاف بدون کادر تیره */
 .liquid-glass {
-  background: rgba(10, 5, 20, 0.25) !important; /* شفافیت بالا برای دیده شدن نورها */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05) !important;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  background: rgba(15, 8, 30, 0.15) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
   border-radius: 16px;
