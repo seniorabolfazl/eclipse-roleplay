@@ -86,3 +86,21 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #7c3aed; /* بنفش روشن‌تر در حالت هاور */
 }
+/* Custom Cursor (GTA Vibe) */
+body {
+  cursor: crosshair !important;
+}
+button, a, input, textarea, select {
+  cursor: pointer !important;
+}
+
+/* افکت مانیتور قدیمی برای ایجاد حس سیستم‌های داخل بازی */
+.crt-overlay {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 9999;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+  background-size: 100% 4px;
+  opacity: 0.3;
+}
