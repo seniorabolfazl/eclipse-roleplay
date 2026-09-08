@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #050308;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* Fallback backdrop shown when no video source is set — a slow, single
+   breathing glow behind a near-black field, standing in for the eclipse's
+   corona until a real clip is dropped into VIDEO_SRC. */
+.eclipse-fallback-bg {
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 15%, rgba(124, 58, 237, 0.35), transparent 60%),
+    radial-gradient(ellipse 90% 70% at 50% 100%, rgba(42, 15, 77, 0.55), transparent 65%),
+    #050308;
+  animation: eclipse-breathe 10s ease-in-out infinite;
+}
+
+@keyframes eclipse-breathe {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.12); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eclipse-fallback-bg {
+    animation: none;
+  }
+}
+
+/* Liquid glass — tinted with a faint violet cast to match the Eclipse theme */
+.liquid-glass {
+  background: rgba(20, 8, 36, 0.45);
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: none;
+  box-shadow: inset 0 1px 1px rgba(180, 120, 255, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(
+    180deg,
+    rgba(180, 120, 255, 0.35) 0%,
+    rgba(180, 120, 255, 0.12) 20%,
+    rgba(180, 120, 255, 0) 40%,
+    rgba(180, 120, 255, 0) 60%,
+    rgba(180, 120, 255, 0.12) 80%,
+    rgba(180, 120, 255, 0.35) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
