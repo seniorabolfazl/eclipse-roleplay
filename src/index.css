@@ -71,3 +71,18 @@ body {
   mask-composite: exclude;
   pointer-events: none;
 }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050308;
+}
+::-webkit-scrollbar-thumb {
+  background: #5b21b6; /* بنفش تیره */
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7c3aed; /* بنفش روشن‌تر در حالت هاور */
+}
