@@ -7,11 +7,10 @@ export default function Navbar() {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
 
-  // ایده: افکت صوتی هنگام تعامل با منو
   const playClick = () => {
     const audio = new Audio('https://www.soundjay.com/buttons/sounds/button-09.mp3'); 
     audio.volume = 0.3;
-    audio.play().catch(() => {}); // هندل کردن ارور در مرورگرهایی که اتوپلی را می‌بندند
+    audio.play().catch(() => {});
   };
 
   const navLinks = [
@@ -19,19 +18,19 @@ export default function Navbar() {
     { name: 'داستان', path: '/story' },
     { name: 'فکشن‌ها', path: '/factions' },
     { name: 'مجرمین', path: '/wanted' },
-    { name: 'فروشگاه', path: '/store' }, // اضافه شد
+    { name: 'فروشگاه', path: '/store' }, // تب فروشگاه VIP
     { name: 'قوانین', path: '/rules' },
     { name: 'شهروندی', path: '/whitelist' },
-    { name: 'مدیریت', path: '/admin' },  // اضافه شد
+    { name: 'مدیریت', path: '/admin' },  // تب پنل ادمین
   ];
 
   return (
     <nav className="relative z-50 flex items-center justify-between px-6 py-5 max-w-7xl mx-auto w-full">
-      <div className="flex items-center gap-12">
+      <div className="flex items-center gap-8">
         <Link to="/" onClick={playClick} className="text-2xl font-bold tracking-widest uppercase text-white hover:text-purple-400 transition-colors">
           ECLIPSE
         </Link>
-        <ul className="hidden md:flex gap-8 text-sm text-gray-300">
+        <ul className="hidden lg:flex gap-6 text-sm text-gray-300">
           {navLinks.map((link) => (
             <li key={link.path}>
               <Link 
@@ -51,26 +50,21 @@ export default function Navbar() {
       </div>
 
       <div className="flex items-center gap-4">
-        <button className="hidden md:block liquid-glass px-6 py-2 text-sm font-medium hover:bg-white/10 transition-all rounded-lg text-white">
-          شروع چت
-        </button>
-        {/* دکمه منوی موبایل */}
         <button 
-          className="md:hidden text-white z-50 p-2"
+          className="lg:hidden text-white z-50 p-2"
           onClick={() => { setIsOpen(!isOpen); playClick(); }}
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
-      {/* منوی بازشوی موبایل با انیمیشن */}
       <AnimatePresence>
         {isOpen && (
           <motion.div 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-20 left-4 right-4 liquid-glass rounded-xl p-6 flex flex-col gap-4 md:hidden shadow-2xl border border-purple-500/30"
+            className="absolute top-20 left-4 right-4 liquid-glass rounded-xl p-6 flex flex-col gap-3 lg:hidden shadow-2xl border border-purple-500/30 bg-black/90 z-50"
           >
             {navLinks.map((link) => (
               <Link 
@@ -84,9 +78,6 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            <button className="bg-white text-black px-6 py-3 mt-4 text-sm font-bold rounded-lg w-full">
-              شروع چت با پشتیبانی
-            </button>
           </motion.div>
         )}
       </AnimatePresence>
